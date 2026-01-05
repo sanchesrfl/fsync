@@ -2,3 +2,5 @@
 /a
 /b
 **/fsync_conscious.egg-info/
+.pypirc
+dist/
