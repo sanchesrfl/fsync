@@ -1,4 +1,4 @@
 **/__pycache__/
 /a
 /b
-/fsync_conscious.egg-info/
+**/fsync_conscious.egg-info/
