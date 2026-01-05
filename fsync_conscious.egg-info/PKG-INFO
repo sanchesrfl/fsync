@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: fsync-conscious
+Version: 0.1.0
+Summary: Conscious filesystem diff, audit and sync tool
+Author: Rafael Sanches
+License: MIT
+License-File: LICENSE
+Dynamic: license-file
