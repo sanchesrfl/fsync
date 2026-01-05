@@ -1,11 +1,7 @@
 import os
-import sys
-import argparse
 import shutil
 import hashlib
 from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime
-import json
 import stat
 
 REPORT = {
