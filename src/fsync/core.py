@@ -120,7 +120,7 @@ def diff_dirs(a, b, use_hash=False):
 
 
 
-def apply_sync(a, b, diff, delete=False, dry=False, strict_fs=""):
+def apply_sync(a, b, diff, delete=False, dry=False, strict_fs=False):
     for d in diff["missing_dirs"]:
         target = os.path.join(b, d)
         print(f"[DIR ] {target}")
