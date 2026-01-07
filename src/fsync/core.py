@@ -11,13 +11,6 @@ REPORT = {
     "invalid": []
 }
 
-def is_valid_filename(name):
-    # remove apenas whitespace no fim para teste
-    if name.rstrip() != name:
-        return False
-    return True
-
-
 def sha256(path):
     h = hashlib.sha256()
     try:
