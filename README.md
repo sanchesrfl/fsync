@@ -1,4 +1,3 @@
-
 # fsync-conscious
 
 > Conscious filesystem diff, audit & sync tool  
@@ -52,6 +51,45 @@ Common tools (`cp`, GUIs, copy/paste):
 
 ---
 
+## 🖥️ Supported operating systems
+
+`fsync-conscious` is **OS-aware but not OS-abstracted**.
+
+### ✅ Fully supported
+
+- **Linux** (ext4, xfs, btrfs, ZFS, network mounts, Docker volumes)
+
+Linux is the **primary target platform** and the environment where all features are guaranteed.
+
+---
+
+### 🟡 Partially supported
+
+- **macOS**
+
+Most functionality works as expected, but behavior depends on:
+- filesystem (APFS / HFS+)
+- permission model
+- extended attributes
+
+Use with care on production or critical data.
+
+---
+
+### ❌ Not supported
+
+- **Windows (native)**
+
+Reason:
+- incompatible filesystem semantics
+- different permission model
+- path and filename rules differ fundamentally
+
+> Running under **WSL (Windows Subsystem for Linux)** is supported,  
+> since the tool then operates on a Linux filesystem layer.
+
+---
+
 ## 📦 Installation
 
 ### From PyPI (recommended)
@@ -60,7 +98,7 @@ Common tools (`cp`, GUIs, copy/paste):
 pip install fsync-conscious
 ````
 
-This installs the `fsync` CLI globally.
+This installs the **`fsync` CLI globally**.
 
 ---
 
@@ -94,7 +132,7 @@ Where:
 ### 1️⃣ `diff` — Difference exploration
 
 Shows **what is different** between A and B.
-Does not create, copy, or delete anything.
+Does **not** create, copy, or delete anything.
 
 ```bash
 fsync diff A B
@@ -137,7 +175,7 @@ fsync check A B
 * exit code `0` → identical
 * exit code `1` → differences found
 
-Ideal for CI, sanity checks, and automated audits.
+Ideal for **CI**, sanity checks, and automated audits.
 
 ---
 
@@ -154,7 +192,7 @@ By default, comparison is based on:
 fsync sync A B
 ```
 
-#### Advantages
+**Advantages:**
 
 * fast
 * low I/O
@@ -171,7 +209,7 @@ Enables content-based comparison.
 fsync diff A B --hash
 ```
 
-Behavior:
+**Behavior:**
 
 * reads full file contents
 * detects any real content change
@@ -262,7 +300,6 @@ Inspired by `rsync`:
 | ---- | --------------------------- |
 | `0`  | total success               |
 | `1`  | differences found           |
-| `2`  | sync applied                |
 | `10` | skipped files               |
 | `20` | unreadable files            |
 | `30` | invalid files               |
@@ -350,5 +387,3 @@ This tool exists for people who need to:
 
 MIT — use, modify, and distribute freely.
 But **understand what you are doing**.
-
-
