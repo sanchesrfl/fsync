@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fsync-conscious.dev/schema/fsync-report-1.0.json",
+  "title": "fsync-conscious Audit Report",
+  "type": "object",
+  "required": ["meta", "diff", "exit_code"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["fsync_version", "mode", "source", "destination", "timestamp"],
+      "properties": {
+        "fsync_version": { "type": "string" },
+        "mode": { "type": "string", "enum": ["diff", "sync", "check"] },
+        "source": { "type": "string" },
+        "destination": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "dry_run": { "type": "boolean" },
+        "hash": { "type": "boolean" },
+        "delete": { "type": "boolean" },
+        "strict_fs": { "type": "boolean" }
+      }
+    },
+    "diff": {
+      "type": "object",
+      "required": [
+        "missing_dirs",
+        "extra_dirs",
+        "new_files",
+        "updated_files",
+        "extra_files"
+      ],
+      "properties": {
+        "missing_dirs": { "type": "array", "items": { "type": "string" } },
+        "extra_dirs": { "type": "array", "items": { "type": "string" } },
+        "new_files": { "type": "array", "items": { "type": "string" } },
+        "updated_files": { "type": "array", "items": { "type": "string" } },
+        "extra_files": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "required": ["copied", "skipped", "unreadable", "invalid"],
+      "properties": {
+        "copied": { "type": "array", "items": { "type": "string" } },
+        "skipped": { "type": "array", "items": { "type": "string" } },
+        "unreadable": { "type": "array", "items": { "type": "string" } },
+        "invalid": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "exit_code": { "type": "integer" }
+  }
+}
