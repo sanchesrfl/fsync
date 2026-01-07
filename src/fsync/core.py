@@ -161,12 +161,6 @@ def apply_sync(a, b, diff, delete=False, dry=False, strict_fs=False):
             if strict_fs:
                 raise
 
-        if not dry:
-            os.makedirs(os.path.dirname(dst), exist_ok=True)
-            try:
-                shutil.copy2(src, dst)
-            except OSError as e:
-                print(f"[WARN] copy failed ({e}): {f}")
 
 
     if delete:
